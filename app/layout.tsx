@@ -73,7 +73,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${dmSerifDisplay.variable} ${futura.variable} antialiased`}>
+      <body className={`${dmSerifDisplay.variable} ${futura.variable} antialiased min-w-xs`}>
         {children}
       </body>
     </html>

@@ -2,8 +2,13 @@
 
 body {
   font-family: var(--font-futura);
+  color: rgba(242, 242, 242, 1);
 }
 
 h1 {
   font-family: var(--font-dmSerifDisplay);
+}
+
+@theme {
+  --color-brand: rgba(34, 42, 53, 1);
 }
