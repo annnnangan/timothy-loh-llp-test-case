@@ -1,15 +1,64 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import localFont from "next/font/local";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+export const dmSerifDisplay = localFont({
+  src: [
+    {
+      path: "../public/fonts/dm-serif-display/DMSerifDisplay-Regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/dm-serif-display/DMSerifDisplay-Italic.ttf",
+      weight: "400",
+      style: "italic",
+    },
+  ],
+  variable: "--font-dmSerifDisplay",
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+export const futura = localFont({
+  src: [
+    {
+      path: "../public/fonts/futura/Futura-Thin.ttf",
+      weight: "100",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/futura/Futura-ThinItalic.ttf",
+      weight: "100",
+      style: "italic",
+    },
+    {
+      path: "../public/fonts/futura/Futura-ThinRegular.ttf",
+      weight: "100",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/futura/futura-BookBT.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/futura/Futura-L.ttf",
+      weight: "300", // Light
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/futura/Futura-M.ttf",
+      weight: "500", // Medium
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/futura/Futura-B.ttf",
+      weight: "700", // Bold
+      style: "normal",
+    },
+  ],
+  variable: "--font-futura",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -24,9 +73,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${dmSerifDisplay.variable} ${futura.variable} antialiased`}>
         {children}
       </body>
     </html>
