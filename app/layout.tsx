@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import localFont from "next/font/local";
 
+import { SessionProvider } from "next-auth/react";
+
 export const dmSerifDisplay = localFont({
   src: [
     {
@@ -74,7 +76,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${dmSerifDisplay.variable} ${futura.variable} antialiased min-w-xs`}>
-        {children}
+        <SessionProvider>{children}</SessionProvider>
       </body>
     </html>
   );
