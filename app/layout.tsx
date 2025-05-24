@@ -5,7 +5,7 @@ import { ToastContainer } from "react-toastify";
 import { SessionProvider } from "next-auth/react";
 import QueryClientProvider from "@/components/QueryClientProvider";
 
-export const dmSerifDisplay = localFont({
+const dmSerifDisplay = localFont({
   src: [
     {
       path: "../public/fonts/dm-serif-display/DMSerifDisplay-Regular.ttf",
@@ -22,7 +22,7 @@ export const dmSerifDisplay = localFont({
   display: "swap",
 });
 
-export const futura = localFont({
+const futura = localFont({
   src: [
     {
       path: "../public/fonts/futura/Futura-Thin.ttf",
