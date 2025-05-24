@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import localFont from "next/font/local";
-
+import { ToastContainer } from "react-toastify";
 import { SessionProvider } from "next-auth/react";
+import QueryClientProvider from "@/components/QueryClientProvider";
 
 export const dmSerifDisplay = localFont({
   src: [
@@ -45,17 +46,17 @@ export const futura = localFont({
     },
     {
       path: "../public/fonts/futura/Futura-L.ttf",
-      weight: "300", // Light
+      weight: "300",
       style: "normal",
     },
     {
       path: "../public/fonts/futura/Futura-M.ttf",
-      weight: "500", // Medium
+      weight: "500",
       style: "normal",
     },
     {
       path: "../public/fonts/futura/Futura-B.ttf",
-      weight: "700", // Bold
+      weight: "700",
       style: "normal",
     },
   ],
@@ -76,7 +77,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${dmSerifDisplay.variable} ${futura.variable} antialiased min-w-xs`}>
-        <SessionProvider>{children}</SessionProvider>
+        <SessionProvider>
+          <QueryClientProvider>
+            {children} <ToastContainer />
+          </QueryClientProvider>
+        </SessionProvider>
       </body>
     </html>
   );

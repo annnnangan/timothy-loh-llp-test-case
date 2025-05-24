@@ -119,11 +119,6 @@
   }
 }
 
-body {
-  font-family: var(--font-futura);
-  color: rgba(242, 242, 242, 1);
-}
-
 h1 {
   font-family: var(--font-dmSerifDisplay);
 }
@@ -137,4 +132,9 @@ button {
   --color-brand-gray-dark: rgba(82, 102, 130, 1);
   --color-brand-gray-light: rgba(140, 160, 180, 1);
   --color-brand-beige: rgba(233, 228, 204, 1);
+}
+
+body {
+  font-family: var(--font-futura);
+  color: var(--color-brand-blue-dark);
 }

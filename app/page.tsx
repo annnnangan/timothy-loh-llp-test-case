@@ -2,7 +2,11 @@ import { auth } from "@/auth/auth";
 import LoginButton from "@/components/LoginButton";
 import Image from "next/image";
 
+import StockList from "@/components/StockList";
 import UserMenu from "@/components/UserMenu";
+import Subscription from "@/components/Subscription";
+
+const STOCK_API_KEY = process.env.TWELVE_DATA_API_KEY!;
 
 export default async function page() {
   const session = await auth();
@@ -20,7 +24,7 @@ export default async function page() {
                   height={36}
                   className="w-6 h-6 md:w-8 md:h-8 lg:w-12 lg:h-12"
                 />
-                <p className="hidden xl:block xl:text-2xl font-bold">Menu</p>
+                <p className="hidden xl:block xl:text-2xl font-bold text-brand-beige">Menu</p>
               </div>
               <div className="flex gap-5 items-center">
                 <Image
@@ -30,7 +34,7 @@ export default async function page() {
                   height={36}
                   className="w-6 h-6 md:w-8 md:h-8 lg:w-12 lg:h-12"
                 />
-                <p className="hidden xl:block xl:text-2xl font-bold">Search</p>
+                <p className="hidden xl:block xl:text-2xl font-bold text-brand-beige">Search</p>
               </div>
             </div>
             <div className="basis-8/12 md:col-span-2">
@@ -56,9 +60,21 @@ export default async function page() {
           </div>
         </div>
       </header>
-      <section className="container mx-auto px-3 md:px-0 my-5">
-        <div className="flex">
-          <div>{!session ? <LoginButton /> : <UserMenu />}</div>
+      <section className="container mx-auto px-3 md:px-2 my-5">
+        <div className="flex justify-end mb-2 lg:hidden lg:mb-0">
+          {!session ? <LoginButton /> : <UserMenu />}
+        </div>
+        <div className="lg:grid lg:grid-cols-5 lg:space-x-14 lg:space-y-0 space-y-5">
+          <div className="col-span-3">
+            <StockList apiKey={STOCK_API_KEY} />
+          </div>
+          <div className="col-span-2 flex gap-3">
+            <div className="grow">
+              <Subscription />
+            </div>
+
+            <div className="hidden lg:block">{!session ? <LoginButton /> : <UserMenu />}</div>
+          </div>
         </div>
       </section>
     </>
