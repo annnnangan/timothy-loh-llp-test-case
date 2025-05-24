@@ -1,10 +1,11 @@
 import { auth } from "@/auth/auth";
 import LoginButton from "@/components/LoginButton";
-import Image from "next/image";
-
 import StockList from "@/components/StockList";
-import UserMenu from "@/components/UserMenu";
 import Subscription from "@/components/Subscription";
+
+import LatestNewsSection from "@/components/LatestNewsSection";
+import UserMenu from "@/components/UserMenu";
+import Image from "next/image";
 
 const STOCK_API_KEY = process.env.TWELVE_DATA_API_KEY!;
 
@@ -86,16 +87,16 @@ export default async function page() {
         <div className="container mx-auto px-3 md:px-2 my-5 h-full w-full">
           <h1 className="text-[#97999b] lowercase text-5xl drop-shadow-lg absolute top-72  z-20">
             latest news <br />
-            <span className="ms-10 uppercase text-white drop-shadow-lg">& Insights</span>
+            <span className="ms-10 uppercase text-gray-50 drop-shadow-lg">& Insights</span>
           </h1>
         </div>
       </section>
-      <section className="bg-brand-blue-dark">
+      <section className="bg-brand-blue-dark mb-10">
         <div className="container mx-auto px-3 md:px-2 py-8">
           <div className="flex flex-wrap justify-between items-center gap-3">
-            <h2 className="uppercase font-medium text-[#e6e6e6] text-xl">
+            <p className="uppercase font-medium text-gray-50 text-xl">
               STAY INFORMED ON THE MOST PRESSING LEGAL AND REGULATORY NEWS
-            </h2>
+            </p>
             <div>
               <a
                 href="https://www.linkedin.com/company/timothy-loh-solicitors/"
@@ -106,6 +107,12 @@ export default async function page() {
               </a>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="bg-brand-blue-dark">
+        <div className="container mx-auto px-3 md:px-2 py-5">
+          <LatestNewsSection />
         </div>
       </section>
     </>

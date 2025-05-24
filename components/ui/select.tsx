@@ -22,9 +22,13 @@ function SelectTrigger({
   className,
   size = "default",
   children,
+  iconColor,
+  iconPosition = "right",
   ...props
 }: React.ComponentProps<typeof SelectPrimitive.Trigger> & {
   size?: "sm" | "default";
+  iconColor?: string;
+  iconPosition?: "left" | "right";
 }) {
   return (
     <SelectPrimitive.Trigger
@@ -36,10 +40,17 @@ function SelectTrigger({
       )}
       {...props}
     >
+      {iconPosition === "left" && (
+        <SelectPrimitive.Icon asChild>
+          <ChevronDownIcon className={`size-4 ${iconColor}`} />
+        </SelectPrimitive.Icon>
+      )}
       {children}
-      <SelectPrimitive.Icon asChild>
-        <ChevronDownIcon className="size-4 text-brand-blue-dark" />
-      </SelectPrimitive.Icon>
+      {iconPosition === "right" && (
+        <SelectPrimitive.Icon asChild>
+          <ChevronDownIcon className={`size-4 ${iconColor}`} />
+        </SelectPrimitive.Icon>
+      )}
     </SelectPrimitive.Trigger>
   );
 }

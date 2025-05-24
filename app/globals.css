@@ -119,14 +119,6 @@
   }
 }
 
-h1 {
-  font-family: var(--font-dmSerifDisplay);
-}
-
-button {
-  cursor: pointer;
-}
-
 @theme {
   --color-brand-blue-dark: rgba(34, 42, 53, 1);
   --color-brand-gray-dark: rgba(82, 102, 130, 1);
@@ -137,4 +129,18 @@ button {
 body {
   font-family: var(--font-futura);
   color: var(--color-brand-blue-dark);
+}
+
+.font-DMSerifDisplay {
+  font-family: var(--font-dmSerifDisplay);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-dmSerifDisplay);
+}
+
+button {
+  cursor: pointer;
 }

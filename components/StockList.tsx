@@ -66,7 +66,10 @@ const StockList = ({ apiKey }: { apiKey: string }) => {
       <div className="flex flex-col space-y-1 lg:items-center lg:flex-row lg:space-x-2">
         <div className="flex justify-between">
           <Select defaultValue="top-securities">
-            <SelectTrigger className="border-0 shadow-none text-brand-blue-dark font-medium text-md p-0">
+            <SelectTrigger
+              className="border-0 shadow-none text-brand-blue-dark font-medium text-md p-0"
+              iconColor="text-brand-blue-dark"
+            >
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
