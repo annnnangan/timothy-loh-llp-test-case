@@ -44,14 +44,14 @@ export default async function page() {
             <div className="flex gap-2 md:gap-8 lg:gap-12 justify-self-end">
               <Image
                 src="/assets/language-icon.png"
-                alt="menu"
+                alt="language"
                 width={48}
                 height={48}
                 className="w-7 h-7 md:w-9 md:h-9 lg:w-12 lg:h-12"
               />
               <Image
                 src="/assets/linkedin-icon.png"
-                alt="search"
+                alt="linkedin"
                 width={48}
                 height={48}
                 className="w-7 h-7 md:w-9 md:h-9 lg:w-12 lg:h-12"
@@ -74,6 +74,37 @@ export default async function page() {
             </div>
 
             <div className="hidden lg:block">{!session ? <LoginButton /> : <UserMenu />}</div>
+          </div>
+        </div>
+      </section>
+      <section
+        className="relative min-h-[450px] bg-[url('/assets/hero-banner-mobile.png')] md:bg-[url('/assets/hero-banner.png')] bg-cover bg-center"
+        id="hero"
+      >
+        <div className="absolute inset-0 z-10 bg-gradient-to-t md:bg-gradient-to-tr from-black/90 to-transparent " />
+
+        <div className="container mx-auto px-3 md:px-2 my-5 h-full w-full">
+          <h1 className="text-[#97999b] lowercase text-5xl drop-shadow-lg absolute top-72  z-20">
+            latest news <br />
+            <span className="ms-10 uppercase text-white drop-shadow-lg">& Insights</span>
+          </h1>
+        </div>
+      </section>
+      <section className="bg-brand-blue-dark">
+        <div className="container mx-auto px-3 md:px-2 py-8">
+          <div className="flex flex-wrap justify-between items-center gap-3">
+            <h2 className="uppercase font-medium text-[#e6e6e6] text-xl">
+              STAY INFORMED ON THE MOST PRESSING LEGAL AND REGULATORY NEWS
+            </h2>
+            <div>
+              <a
+                href="https://www.linkedin.com/company/timothy-loh-solicitors/"
+                className="text-brand-beige flex flex-wrap justify-center items-center gap-2"
+              >
+                <Image src="/assets/linkedin-icon.png" alt="linkedin" width={25} height={25} />
+                <p className="text-md lg:text-2xl font-medium">Follow us on Linkedin</p>
+              </a>
+            </div>
           </div>
         </div>
       </section>
