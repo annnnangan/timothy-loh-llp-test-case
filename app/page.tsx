@@ -6,6 +6,7 @@ import UserMenu from "@/components/UserMenu";
 
 import Image from "next/image";
 import { auth } from "@/auth/auth";
+import SlideUpTransition from "@/components/transition/SlideUpTransition";
 
 export const metadata = {
   title: "Latest News & Insights",
@@ -16,6 +17,7 @@ export default async function page() {
   return (
     <>
       {/* Header */}
+
       <header className="bg-brand-blue-dark">
         <div className="container mx-auto px-3 md:px-2 py-10">
           <div className="flex justify-between gap-5 items-center md:gap-0 md:grid md:grid-cols-4 md:justify-items-center md:place-items-center">
@@ -90,39 +92,44 @@ export default async function page() {
         id="hero"
       >
         <div className="absolute inset-0 z-10 bg-gradient-to-t md:bg-gradient-to-tr from-black/90 to-transparent " />
-
-        <div className="container mx-auto px-3 md:px-2 my-5 h-full w-full">
-          <h1 className="text-[#97999b] lowercase text-5xl drop-shadow-lg absolute top-72  z-20">
-            latest news <br />
-            <span className="ms-10 uppercase text-gray-50 drop-shadow-lg">& Insights</span>
-          </h1>
-        </div>
+        <SlideUpTransition>
+          <div className="container mx-auto px-3 md:px-2 my-5 h-full w-full">
+            <h1 className="text-[#97999b] lowercase text-5xl drop-shadow-lg absolute top-72  z-20">
+              latest news <br />
+              <span className="ms-10 uppercase text-gray-50 drop-shadow-lg">& Insights</span>
+            </h1>
+          </div>
+        </SlideUpTransition>
       </section>
 
       {/* Follow on LinkedIn */}
       <section className="bg-brand-blue-dark mb-10">
-        <div className="container mx-auto px-3 md:px-2 py-8">
-          <div className="flex flex-wrap justify-between items-center gap-3">
-            <p className="uppercase font-medium text-gray-50 text-xl">
-              STAY INFORMED ON THE MOST PRESSING LEGAL AND REGULATORY NEWS
-            </p>
-            <div>
-              <a
-                href="https://www.linkedin.com/company/timothy-loh-solicitors/"
-                className="text-brand-beige flex flex-wrap justify-center items-center gap-2"
-              >
-                <Image src="/assets/linkedin-icon.png" alt="linkedin" width={25} height={25} />
-                <p className="text-md lg:text-2xl font-medium">Follow us on Linkedin</p>
-              </a>
+        <SlideUpTransition>
+          <div className="container mx-auto px-3 md:px-2 py-8">
+            <div className="flex flex-wrap justify-between items-center gap-3">
+              <p className="uppercase font-medium text-gray-50 text-xl">
+                STAY INFORMED ON THE MOST PRESSING LEGAL AND REGULATORY NEWS
+              </p>
+              <div>
+                <a
+                  href="https://www.linkedin.com/company/timothy-loh-solicitors/"
+                  className="text-brand-beige flex flex-wrap justify-center items-center gap-2"
+                >
+                  <Image src="/assets/linkedin-icon.png" alt="linkedin" width={25} height={25} />
+                  <p className="text-md lg:text-2xl font-medium">Follow us on Linkedin</p>
+                </a>
+              </div>
             </div>
           </div>
-        </div>
+        </SlideUpTransition>
       </section>
 
       {/* Latest News */}
       <section className="bg-brand-blue-dark">
         <div className="container mx-auto px-3 md:px-2 py-5">
-          <LatestNewsSection />
+          <SlideUpTransition>
+            <LatestNewsSection />
+          </SlideUpTransition>
         </div>
       </section>
     </>
