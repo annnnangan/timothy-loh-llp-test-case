@@ -1,15 +1,14 @@
 "use client";
+import { Button } from "@/components/shadcn/button";
+import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/shadcn/form";
+import { Input } from "@/components/shadcn/input";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-import { Button } from "@/components/ui/button";
-import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-
 const EmailSubscriptionSchema = z.object({
-  email: z.string().email({ message: "Please enter email." }),
+  email: z.string().email({ message: "Please enter valid email." }),
 });
 
 const Subscription = () => {
@@ -33,7 +32,11 @@ const Subscription = () => {
           render={({ field }) => (
             <FormItem className="flex-1">
               <FormControl>
-                <Input className="w-full" placeholder="Enter your email address" {...field} />
+                <Input
+                  className="w-full text-brand-blue-dark "
+                  placeholder="Enter your email address"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>

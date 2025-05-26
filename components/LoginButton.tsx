@@ -2,7 +2,7 @@
 import { Loader2 } from "lucide-react";
 import { signIn } from "next-auth/react";
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/shadcn/button";
 import { toast } from "react-toastify";
 
 const LoginButton = () => {

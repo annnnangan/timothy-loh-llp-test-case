@@ -36,17 +36,17 @@ const futura = localFont({
     },
     {
       path: "../public/fonts/futura/Futura-ThinRegular.ttf",
-      weight: "100",
-      style: "normal",
-    },
-    {
-      path: "../public/fonts/futura/Futura-BookBT.ttf",
-      weight: "400",
+      weight: "200",
       style: "normal",
     },
     {
       path: "../public/fonts/futura/Futura-L.ttf",
       weight: "300",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/futura/Futura-BookBT.ttf",
+      weight: "400",
       style: "normal",
     },
     {

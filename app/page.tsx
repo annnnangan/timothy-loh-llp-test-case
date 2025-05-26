@@ -1,11 +1,11 @@
-import { auth } from "@/auth/auth";
 import LoginButton from "@/components/LoginButton";
 import StockList from "@/components/StockList";
 import Subscription from "@/components/Subscription";
-
 import LatestNewsSection from "@/components/LatestNewsSection";
 import UserMenu from "@/components/UserMenu";
+
 import Image from "next/image";
+import { auth } from "@/auth/auth";
 
 export const metadata = {
   title: "Latest News & Insights",
@@ -15,8 +15,9 @@ export default async function page() {
   const session = await auth();
   return (
     <>
-      <header className="bg-brand-blue-dark py-10">
-        <div className="px-5">
+      {/* Header */}
+      <header className="bg-brand-blue-dark">
+        <div className="container mx-auto px-3 md:px-2 py-10">
           <div className="flex justify-between gap-5 items-center md:gap-0 md:grid md:grid-cols-4 md:justify-items-center md:place-items-center">
             <div className="flex gap-2 md:gap-8 lg:gap-12 justify-self-start">
               <div className="flex gap-5 items-center">
@@ -27,7 +28,7 @@ export default async function page() {
                   height={36}
                   className="w-6 h-6 md:w-8 md:h-8 lg:w-12 lg:h-12"
                 />
-                <p className="hidden xl:block xl:text-2xl font-bold text-brand-beige">Menu</p>
+                <p className="hidden xl:block xl:text-2xl font-medium text-gray-50">Menu</p>
               </div>
               <div className="flex gap-5 items-center">
                 <Image
@@ -37,7 +38,7 @@ export default async function page() {
                   height={36}
                   className="w-6 h-6 md:w-8 md:h-8 lg:w-12 lg:h-12"
                 />
-                <p className="hidden xl:block xl:text-2xl font-bold text-brand-beige">Search</p>
+                <p className="hidden xl:block xl:text-2xl font-medium text-gray-50">Search</p>
               </div>
             </div>
             <div className="basis-8/12 md:col-span-2">
@@ -63,6 +64,8 @@ export default async function page() {
           </div>
         </div>
       </header>
+
+      {/* Stock Ticker, Subscription & Login */}
       <section className="container mx-auto px-3 md:px-2 my-5">
         <div className="flex justify-end mb-2 lg:hidden lg:mb-0">
           {!session ? <LoginButton /> : <UserMenu />}
@@ -80,6 +83,8 @@ export default async function page() {
           </div>
         </div>
       </section>
+
+      {/* Hero Banner */}
       <section
         className="relative min-h-[450px] bg-[url('/assets/hero-banner-mobile.png')] md:bg-[url('/assets/hero-banner.png')] bg-cover bg-center"
         id="hero"
@@ -93,6 +98,8 @@ export default async function page() {
           </h1>
         </div>
       </section>
+
+      {/* Follow on LinkedIn */}
       <section className="bg-brand-blue-dark mb-10">
         <div className="container mx-auto px-3 md:px-2 py-8">
           <div className="flex flex-wrap justify-between items-center gap-3">
@@ -112,6 +119,7 @@ export default async function page() {
         </div>
       </section>
 
+      {/* Latest News */}
       <section className="bg-brand-blue-dark">
         <div className="container mx-auto px-3 md:px-2 py-5">
           <LatestNewsSection />

@@ -15,8 +15,8 @@ const NewsCard = ({
 }) => {
   return (
     <a href={link} className="h-full">
-      <div className="text-gray-50 px-5 py-5 space-y-9 h-full flex flex-col">
-        <h3 className="text-2xl line-clamp-2">{title}</h3>
+      <div className="text-gray-50 px-2 lg:px-5 py-5 space-y-9 h-full flex flex-col">
+        <h3 className="text-2xl line-clamp-2 font-DMSerifDisplay">{title}</h3>
         <p className="line-clamp-3 font-medium">{description}</p>
 
         <div className="flex justify-between font-medium mt-auto">

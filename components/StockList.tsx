@@ -1,13 +1,13 @@
 "use client";
-import { Skeleton } from "@/components/ui/skeleton";
-import { Carousel, CarouselApi, CarouselContent, CarouselItem } from "@/components/ui/carousel";
+import { Skeleton } from "@/components/shadcn/skeleton";
+import { Carousel, CarouselApi, CarouselContent, CarouselItem } from "@/components/shadcn/carousel";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from "@/components/shadcn/select";
 import useStocks from "@/hooks/useStocks";
 import { useCallback, useEffect, useState } from "react";
 import StockTicker from "./StockTicker";
@@ -63,7 +63,7 @@ const StockList = () => {
         <div className="flex justify-between">
           <Select defaultValue="top-securities">
             <SelectTrigger
-              className="border-0 shadow-none text-brand-blue-dark font-medium text-md p-0"
+              className="border-0 shadow-none text-brand-blue-dark text-md p-0"
               iconColor="text-brand-blue-dark"
             >
               <SelectValue />
