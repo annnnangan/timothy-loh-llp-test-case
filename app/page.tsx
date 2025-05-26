@@ -7,6 +7,10 @@ import LatestNewsSection from "@/components/LatestNewsSection";
 import UserMenu from "@/components/UserMenu";
 import Image from "next/image";
 
+export const metadata = {
+  title: "Latest News & Insights",
+};
+
 export default async function page() {
   const session = await auth();
   return (
