@@ -3,17 +3,19 @@
 - **Style:** Tailwind, Shadcn UI
 - **Data Fetching & Caching:** React Query
 - **Form & Validation**: React Hook Form with Zod
-- **Authentication:** Next Auth, Okta
+- **Authentication:** NextAuth, Okta
 
 ## 🚩 Getting Started
 1. Create a `.env` file
    
    ```dosini
+    SECRET=
     OKTA_CLIENT_ID=
     OKTA_CLIENT_SECRET=
     OKTA_ISSUER=
     TWELVE_DATA_API_KEY=
    ```
+SECRET is used for NextAuth and could be generated with this command: openssl rand -base64 32
 
 2. Install npm packages
    ```sh
