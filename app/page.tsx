@@ -7,8 +7,6 @@ import LatestNewsSection from "@/components/LatestNewsSection";
 import UserMenu from "@/components/UserMenu";
 import Image from "next/image";
 
-const STOCK_API_KEY = process.env.TWELVE_DATA_API_KEY!;
-
 export default async function page() {
   const session = await auth();
   return (
@@ -67,7 +65,7 @@ export default async function page() {
         </div>
         <div className="lg:grid lg:grid-cols-5 lg:space-x-14 lg:space-y-0 space-y-5">
           <div className="col-span-3">
-            <StockList apiKey={STOCK_API_KEY} />
+            <StockList />
           </div>
           <div className="col-span-2 flex gap-3">
             <div className="grow">

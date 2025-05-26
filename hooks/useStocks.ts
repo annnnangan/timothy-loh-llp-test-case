@@ -1,20 +1,19 @@
-import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 
-const symbols = "MSFT,AAPL,NVDA,AMZN,GOOGL,META,TSLA";
-
-export const fetchStockQuotes = async (apiKey: string) => {
-  const response = await axios.get(
-    `https://api.twelvedata.com/quote?symbol=${symbols}&apikey=${apiKey}`
-  );
-  return response.data;
-};
-
-const useStocks = (apiKey: string) => {
+const useStocks = () => {
   return useQuery({
-    queryKey: ["stocks", apiKey],
-    queryFn: () => fetchStockQuotes(apiKey),
-    staleTime: 1000 * 60 * 60 * 24,
+    queryKey: ["stocks"],
+    queryFn: async () => {
+      const res = await fetch("/api/stocks");
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || "Failed to fetch stock data");
+      }
+
+      return data;
+    },
+    staleTime: 1000 * 60 * 60 * 24, // 24 hours
   });
 };
 

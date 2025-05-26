@@ -21,8 +21,8 @@ type StockInfo = {
   percent_change: string;
 };
 
-const StockList = ({ apiKey }: { apiKey: string }) => {
-  const { data, isLoading, error } = useStocks(apiKey);
+const StockList = () => {
+  const { data, isLoading, error } = useStocks();
   const [api, setApi] = useState<CarouselApi>();
 
   const [canScrollPrev, setCanScrollPrev] = useState(false);
@@ -52,10 +52,6 @@ const StockList = ({ apiKey }: { apiKey: string }) => {
   const scrollNext = useCallback(() => {
     if (api) api.scrollNext();
   }, [api]);
-
-  if (isLoading) {
-    return <p>Loading</p>;
-  }
 
   if (error) {
     return null;
