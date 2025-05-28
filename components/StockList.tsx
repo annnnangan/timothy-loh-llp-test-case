@@ -57,26 +57,73 @@ const StockList = () => {
     return null;
   }
 
-  if (!isLoading && data) {
-    return (
-      <div className="flex flex-col space-y-1 lg:items-center lg:flex-row lg:space-x-2">
-        <div className="flex justify-between">
-          <Select defaultValue="top-securities">
-            <SelectTrigger
-              className="border-0 shadow-none text-brand-blue-dark text-md p-0"
-              iconColor="text-brand-blue-dark"
-            >
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="top-securities">Top Securities</SelectItem>
-              <SelectItem value="featured-stocks">Featured Stocks</SelectItem>
-              <SelectItem value="trending-tickers">Trending Tickers</SelectItem>
-            </SelectContent>
-          </Select>
+  return (
+    <div className="flex flex-col space-y-1 lg:items-center lg:flex-row lg:space-x-2">
+      <div className="flex justify-between">
+        <Select defaultValue="top-securities">
+          <SelectTrigger
+            className="border-0 shadow-none text-brand-blue-dark text-md p-0"
+            iconColor="text-brand-blue-dark"
+          >
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="top-securities">Top Securities</SelectItem>
+            <SelectItem value="featured-stocks">Featured Stocks</SelectItem>
+            <SelectItem value="trending-tickers">Trending Tickers</SelectItem>
+          </SelectContent>
+        </Select>
 
-          {!isLoading && data && (
-            <div className="flex lg:hidden -space-x-1">
+        {!isLoading && data && (
+          <div className="flex lg:hidden -space-x-1">
+            <button
+              onClick={scrollPrev}
+              className={canScrollPrev ? "text-brand-blue-dark" : "text-brand-gray-light"}
+              disabled={!canScrollPrev}
+            >
+              <ChevronLeft />
+            </button>
+            <button
+              onClick={scrollNext}
+              className={canScrollNext ? "text-brand-blue-dark" : "text-brand-gray-light"}
+              disabled={!canScrollNext}
+            >
+              <ChevronRight />
+            </button>
+          </div>
+        )}
+      </div>
+
+      <div className="lg:w-10/12">
+        {isLoading && (
+          <div className="flex gap-2 overflow-hidden">
+            <Skeleton className="h-8 w-full md:basis-1/2 lg:basis-1/3" />
+            <Skeleton className="hidden md:block h-8 md:basis-1/2 lg:basis-1/3" />
+            <Skeleton className="hidden lg:block h-8 lg:basis-1/3" />
+          </div>
+        )}
+
+        {!isLoading && data && (
+          <Carousel
+            setApi={setApi}
+            className="flex md:flex-row gap-2 w-full overflow-hidden relative"
+          >
+            <CarouselContent className="items-center">
+              {Object.entries(data).map(([, info], index) => {
+                const { symbol, close, percent_change } = info as StockInfo;
+                return (
+                  <CarouselItem key={symbol} className="md:basis-1/3 lg:basis-1/2 xl:basis-1/3">
+                    <StockTicker
+                      isHighlighted={index === 0}
+                      symbol={symbol}
+                      price={Number(close)}
+                      change={Number(percent_change)}
+                    />
+                  </CarouselItem>
+                );
+              })}
+            </CarouselContent>
+            <div className="hidden lg:flex -space-x-1">
               <button
                 onClick={scrollPrev}
                 className={canScrollPrev ? "text-brand-blue-dark" : "text-brand-gray-light"}
@@ -92,60 +139,11 @@ const StockList = () => {
                 <ChevronRight />
               </button>
             </div>
-          )}
-        </div>
-
-        <div className="lg:w-10/12">
-          {isLoading && (
-            <div className="flex gap-2 overflow-hidden">
-              <Skeleton className="h-8 w-full md:basis-1/2 lg:basis-1/3" />
-              <Skeleton className="hidden md:block h-8 md:basis-1/2 lg:basis-1/3" />
-              <Skeleton className="hidden lg:block h-8 lg:basis-1/3" />
-            </div>
-          )}
-
-          {!isLoading && data && (
-            <Carousel
-              setApi={setApi}
-              className="flex md:flex-row gap-2 w-full overflow-hidden relative"
-            >
-              <CarouselContent className="items-center">
-                {Object.entries(data).map(([, info], index) => {
-                  const { symbol, close, percent_change } = info as StockInfo;
-                  return (
-                    <CarouselItem key={symbol} className="md:basis-1/3 lg:basis-1/2 xl:basis-1/3">
-                      <StockTicker
-                        isHighlighted={index === 0}
-                        symbol={symbol}
-                        price={Number(close)}
-                        change={Number(percent_change)}
-                      />
-                    </CarouselItem>
-                  );
-                })}
-              </CarouselContent>
-              <div className="hidden lg:flex -space-x-1">
-                <button
-                  onClick={scrollPrev}
-                  className={canScrollPrev ? "text-brand-blue-dark" : "text-brand-gray-light"}
-                  disabled={!canScrollPrev}
-                >
-                  <ChevronLeft />
-                </button>
-                <button
-                  onClick={scrollNext}
-                  className={canScrollNext ? "text-brand-blue-dark" : "text-brand-gray-light"}
-                  disabled={!canScrollNext}
-                >
-                  <ChevronRight />
-                </button>
-              </div>
-            </Carousel>
-          )}
-        </div>
+          </Carousel>
+        )}
       </div>
-    );
-  }
+    </div>
+  );
 };
 
 export default StockList;
